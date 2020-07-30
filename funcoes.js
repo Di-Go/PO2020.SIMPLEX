@@ -117,11 +117,11 @@ function atualizar() {
 }
 
 function mouseIn(id) {
-	document.getElementById("btnImg").src = "info_azul.png"
+	document.getElementById("btnImg").src = "./src/imagens/info_azul.png"
 }
 
 function mouseOut(id) {
-	document.getElementById("btnImg").src = "info.png"
+	document.getElementById("btnImg").src = "./src/imagens/info.png"
 }
 
 function manual() {
