@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Altoritmo do método simplex, para maximização e com restrições <=" />
+    <meta name="description" content="Algoritmo do método simplex, para maximização e com restrições <=" />
     <!--Import Google Fontes-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import Folha de Estilos-->
@@ -12,8 +12,7 @@
     <link type="text/css" rel="stylesheet" href="src/style/materialize/css/materialize.min.css"
         media="screen,projection" />
     <meta name="keywords" content="simplex,altoritmo" />
-    <script type="text/javascript" src="funcoes.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="fraction.js" charset="UTF-8"></script>
+    
     <link rel="icon" href="./src/imagens/information.jpg" />
     <title>Pesquisa Operacional</title>
 </head>
@@ -36,7 +35,7 @@
     <main>
         <section id="tab0-conteudo" class="card-panel desabilitar">
             <div class="container col s12 m7">
-                <h2 class="header">Projeto Simplex</h2>
+                <span class="titulo">Projeto Simplex</span>
                 <div class="card horizontal" aria-colindex="2">
                     <div class="card-image">
                         <img src="./src/imagens/alfa3.jpg" width="800" height="300">
@@ -72,20 +71,20 @@
 
         </section>
         <section id="tab1-conteudo" class="card-panel desabilitar">
-
-            <div class="row">
-                <div class="col s12">
-                    <h1>Simplex - Passo a Passo</h1>
-                </div>
-                <div class="col s12" style="float: right;">
-
-                    <a onClick="manual()">
-                        <img src="./src/imagens/info.png" id="btnImg" title="Informações" onmouseover="mouseIn('img')"
-                            onmouseout="mouseOut('img')" />
-                    </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col s10">
+                        <span class="titulo">Simplex - Passo a Passo</span>
+                    </div>
+                    <div class="col s2" >
+                        <a onClick="manual()">
+                            <img src="./src/imagens/info.png" id="btnImg" title="Informações" onmouseover="mouseIn('img')"
+                                onmouseout="mouseOut('img')" />
+                        </a>
+                    </div>
                 </div>
             </div>
-            <form name="form1" style="margin-right: 800px;">
+            <form name="form1" class="container">
                 <fieldset>
                     <div class="row">
                         <div class="col-md-2">
@@ -132,7 +131,7 @@
         </section>
         <section id="tab2-conteudo" class="card-panel desabilitar">
             <div class="container col s12 m7">
-                <h2 class="header">Thiago dos Santos</h2>
+                <span class="titulo">Thiago dos Santos</span>
                 <div class="card horizontal" aria-colindex="2">
                     <div class="card-image">
                         <img src="./src/imagens/thiago.jpeg" width="400" height="200">
@@ -163,7 +162,7 @@
                 </div>
             </div>
             <div class="container col s12 m7">
-                <h2 class="header">Diego Aleixo</h2>
+                <span class="titulo">Diego Aleixo</span>
                 <div class="card horizontal" >
                     <div class="card-image">
                         <img src="./src/imagens/diego.jpg" width="400" height="200">
@@ -204,6 +203,8 @@
     <!--Scripts-->
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="src/style/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="funcoes.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="fraction.js" charset="UTF-8"></script>
 </body>
 
 </html>
