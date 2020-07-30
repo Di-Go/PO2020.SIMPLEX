@@ -112,7 +112,8 @@ function validarCoeficientes(p_variaveis, p_restricoes) {
 }
 
 function atualizar() {
-	window.location.href='simplex.html';
+	document.location.reload(true);
+	//window.location.href='simplex.html';
 }
 
 function mouseIn(id) {
