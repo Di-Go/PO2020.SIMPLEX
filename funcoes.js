@@ -113,7 +113,6 @@ function validarCoeficientes(p_variaveis, p_restricoes) {
 
 function atualizar() {
 	document.location.reload(true);
-	//window.location.href='simplex.html';
 }
 
 function mouseIn(id) {
@@ -125,60 +124,76 @@ function mouseOut(id) {
 }
 
 function manual() {
-	var texto = 'Simplex - Passo a Passo\n\n'
-	+'Informe o número de variáveis (mínimo 1)\n'
-+'Informe o número de restrições (mínimo 1)\n'
-+'obs.: NÃO contar com a restrição Xi >= 0\n'
-+'Clique no botão "OK"\n'
-+'- Vai aparecer na tela o local para informar os valores dos coeficientes.\n'
-+'Informe os valores dos coeficientes das variáveis na função objetivo\n'
-+'Informe os valores dos coeficientes e da constante nas restrições\n'
-+'Clique no botão "Resolver"\n'
-+'- Vai aparecer na tela o passo a passo da resolução informando a operação realizada antes da tabela.\n'
-+'- No final é exibido os valores das variáveis e o valor resultante da função objetivo.\n'
-+'Clique no botão "Novo" para resolver outro problema.\n\n'
-+'observações: O sistema só resolve problemas de maximização,\n'
-+'com restrições de sinal "<=" e com constantes maiores que zero.';
+	var texto = `Simplex - Passo a Passo
+
+1. Informe o número de variáveis (mínimo 1)
+2. Informe o número de restrições (mínimo 1)
+obs.: NÃO contar com a restrição Xi >= 0
+
+3. Clique no botão "OK"
+- Vai aparecer na tela o local para informar os valores dos coeficientes.
+
+4. Informe os valores dos coeficientes das variáveis na função objetivo
+5. Informe os valores dos coeficientes e da constante nas restrições
+6. Clique no botão "Resolver"
+- Vai aparecer na tela o passo a passo da resolução informando a operação realizada antes da tabela.
+- No final é exibido os valores das variáveis e o valor resultante da função objetivo.
+7. Clique no botão "Novo" para resolver outro problema.
+
+Observações: O sistema só resolve problemas de maximização,
+com restrições de sinal "<=" e com constantes maiores que zero.`;
 	alert(texto);
 }
 
-function criarForm(p_variaveis, p_restricoes) {
+function MonteFormularioRestricoes(variaveis, restricoes) {
 	
-	if (p_variaveis == "" || p_variaveis <= 0 || p_variaveis != parseInt(p_variaveis)) {
+	if (!EhParametrosValidos(variaveis, restricoes)) {
+		return;
+	}
+	
+	CrieFormularioRestricoes(variaveis, restricoes);
+}
+function EhParametrosValidos(variaveis, restricoes){
+	if (variaveis == "" || variaveis <= 0 || variaveis != parseInt(variaveis)) {
 		alert('Preencha o campo com a quantidade de variáveis.');
 		form1.variaveis.focus();
-		return;
-	} else {
-		if (p_restricoes == "" || p_restricoes <= 0 || p_restricoes != parseInt(p_restricoes)) {
-			alert('Preencha o campo com a quantidade de restrições.');
-			form1.regras.focus();
-			return;
-		}
+		return false;
 	}
-	if (p_variaveis > 0 && p_restricoes > 0) {
+
+	if (restricoes == "" || restricoes <= 0 || restricoes != parseInt(restricoes)) {
+		alert('Preencha o campo com a quantidade de restrições.');
+		form1.regras.focus();
+		return false;
+	}
+
+	return true;
+}
+function CrieFormularioRestricoes(variaveis, restricoes){
+	if (variaveis > 0 && restricoes > 0) {
 		document.getElementById("form2").style.display = 'block';
-		document.getElementById("aqui").innerHTML+="<span>Z = </span>";
-		document.getElementById("aqui").innerHTML+="<input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y1' name='y1' />x<sub>1</sub>";
-		for (var h = 2; h <= p_variaveis; h++) {
-			document.getElementById("aqui").innerHTML+=" + <input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y"+h+"' name='y"+h+"' />x<sub>"+h+"</sub>";
+		document.getElementById("form2").classList.add("container");
+		document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<span>Z = </span>";
+		document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y1' name='y1' />x<sub>1</sub>";
+		for (var h = 2; h <= variaveis; h++) {
+			document.getElementById("configuracaoProgramacaoLinear").innerHTML+=" + <input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y"+h+"' name='y"+h+"' />x<sub>"+h+"</sub>";
 		}
-		for (var i = 1; i <= p_restricoes; i++) {
-			document.getElementById("aqui").innerHTML+="<p><b>Restrição "+i+"</b></p>";
-			document.getElementById("aqui").innerHTML+="<input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+"1' name='x"+i+"1' />x<sub>1</sub>";
-			for (var j = 2; j <= p_variaveis; j++) {
-				document.getElementById("aqui").innerHTML+=" + <input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+j+"' name='x"+i+j+"' />x<sub>"+j+"</sub>";
+		for (var i = 1; i <= restricoes; i++) {
+			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<p><b>Restrição "+i+"</b></p>";
+			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+"1' name='x"+i+"1' />x<sub>1</sub>";
+			for (var j = 2; j <= variaveis; j++) {
+				document.getElementById("configuracaoProgramacaoLinear").innerHTML+=" + <input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+j+"' name='x"+i+j+"' />x<sub>"+j+"</sub>";
 			}
-			document.getElementById("aqui").innerHTML+="<span> <= </span>"
+			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<span> <= </span>"
 			+"<input type='number' class='input' required size='5' maxlength='10' id='b"+i+"' name='b"+i+"' style='text-align:left' />";
 		}
-		document.getElementById("aqui").innerHTML+="<p><b>Restrição "+(++p_restricoes)+"</b></p>"
+		document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<p><b>Restrição "+(++restricoes)+"</b></p>"
 		+"<p>x<sub>i</sub> >= 0</p>";
 		document.getElementById("btn1").style.display = 'none';
 		document.getElementById("in1").disabled = true;
 		document.getElementById("in2").disabled = true;
 		document.getElementById('y1').focus();
 	}
-} 
+}
 
 function printTabela(p_matriz) {
 	var restricoes = parseInt(document.form1.regras.value);
