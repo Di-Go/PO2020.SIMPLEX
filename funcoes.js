@@ -35,6 +35,8 @@ function atualizar() {
 }
 //#endregion
 
+//#region Formulario Função Objetivo
+
 function MonteFormularioRestricoes(variaveis, restricoes) {
 	
 	if (!EhParametrosValidos(variaveis, restricoes)) {
@@ -62,15 +64,15 @@ function CrieFormularioRestricoes(variaveis, restricoes){
 	if (variaveis > 0 && restricoes > 0) {
 		document.getElementById("form2").style.display = 'block';
 		document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<span>Z = </span>";
-		document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y1' name='y1' />x<sub>1</sub>";
+		document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y1' name='y1' />X<sub>1</sub>";
 		for (var h = 2; h <= variaveis; h++) {
-			document.getElementById("configuracaoProgramacaoLinear").innerHTML+=" + <input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y"+h+"' name='y"+h+"' />x<sub>"+h+"</sub>";
+			document.getElementById("configuracaoProgramacaoLinear").innerHTML+=" <input type='number' class='inputZ' required autocomplete='off' size='5' maxlength='10' step='0.1' id='y"+h+"' name='y"+h+"' />X<sub>"+h+"</sub>";
 		}
 		for (var i = 1; i <= restricoes; i++) {
 			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<p><b>Restrição "+i+"</b></p>";
-			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+"1' name='x"+i+"1' />x<sub>1</sub>";
+			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+"1' name='x"+i+"1' />X<sub>1</sub>";
 			for (var j = 2; j <= variaveis; j++) {
-				document.getElementById("configuracaoProgramacaoLinear").innerHTML+=" + <input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+j+"' name='x"+i+j+"' />x<sub>"+j+"</sub>";
+				document.getElementById("configuracaoProgramacaoLinear").innerHTML+=" <input type='number' class='input' required autocomplete='off' size='5' maxlength='10' step='0.1' id='x"+i+j+"' name='x"+i+j+"' />X<sub>"+j+"</sub>";
 			}
 			document.getElementById("configuracaoProgramacaoLinear").innerHTML+="<span> <= </span>"
 			+"<input type='number' class='input' required size='5' maxlength='10' id='b"+i+"' name='b"+i+"' style='text-align:left' />";
@@ -84,7 +86,9 @@ function CrieFormularioRestricoes(variaveis, restricoes){
 	}
 }
 
+//#endregion
 
+//#region Calculo Tabela Simplex
 
 function CalcularSimplex() {
 	var restricoes = parseInt(document.form1.regras.value);
@@ -367,3 +371,5 @@ function MonteTabela(p_matriz) {
 	tabela.border = 1;
 	document.getElementById("tab").appendChild(tabela);
 }
+
+//#endregion
