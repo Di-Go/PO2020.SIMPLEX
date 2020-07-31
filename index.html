@@ -86,27 +86,27 @@
             </div>
             <form name="form1" class="container">
                 <fieldset>
-                    <div class="row">
-                        <div class="col-md-2">
+                    <div class="row center">
+                        <div class="col s0 m2"></div>
+                        <div class="col s12 m8">
                             <label for="variaveis" class="lbl1">Quantas variáveis?</label>
-                        </div>
-                        <div class="col-md-1">
                             <input type="number" class="inp1" size="5%" maxlength="10" id="in1" name="variaveis"
-                                value="" min="1" autocomplete="off" autofocus style="height: 28px" />
+                            value="" min="1" autocomplete="off" autofocus style="height: 28px" />
                         </div>
+                        <div class="col s0 m2"></div>
                     </div>
                     <br />
-                    <div class="row">
-                        <div class="col-md-2">
+                    <div class="row center">
+                        <div class="col s0 m2"></div>
+                        <div class="col s12 m8">
                             <label for="regras" class="lbl1">Quantas restrições?</label>
-                        </div>
-                        <div class="col-md-2">
                             <input type="number" class="inp1" size="5%" maxlength="10" id="in2" name="regras" value=""
-                                min="1" autocomplete="off" style="height: 28px" />
+                            min="1" autocomplete="off" style="height: 28px" />
 
-                            <input type="button" class="inp1 btn btn-primary btn-sm" id="btn1" name="ok" value="ok"
-                                onClick="criarForm(variaveis.value,regras.value)" />
+                            <input type="button" class="inp1 btn btn-primary btn-sm" id="btn1" name="ok" value="Iniciar"
+                                onClick="MonteFormularioRestricoes(variaveis.value,regras.value)" />
                         </div>
+                        <div class="col s0 m2"></div>
                     </div>
                 </fieldset>
             </form>
@@ -114,12 +114,18 @@
             <br />
             <form action="" method="post" name="form2" id="form2" style="display:none">
                 <p><b>Função objetivo</b></p>
-                <div id="aqui"></div>
+
+                <div id="configuracaoProgramacaoLinear"></div>
                 <br />
-                <label><input type="button" class="btn btn-primary btn-sm" id="btn2" name="calc" value="Resolver"
-                        onClick="resolver()" /></label>
-                <label><input type="reset" class="btn btn-success btn-sm" id="btn3" name="novo" value="Novo"
-                        onClick="atualizar()" /></label>
+
+                <label>
+                    <input type="button" class="btn btn-primary btn-sm" id="btn2" name="calc" value="Resolver"
+                        onClick="resolver()" />
+                </label>
+                <label>
+                    <input type="reset" class="btn btn-success btn-sm" id="btn3" name="novo" value="Novo"
+                        onClick="atualizar()" />
+                </label>
             </form>
 
             <div id="tab" style="width: 80%; margin: 0 auto;"></div>
